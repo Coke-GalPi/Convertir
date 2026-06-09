@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}
+Output
+{% endblock %}
+
+{% block content %}
+<div class="container mx-auto max-w-5xl px-6 py-12">
+    <div class="overflow-hidden rounded-3xl bg-white shadow-2xl ring-1 ring-slate-200">
+
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 p-6">
+            <h2 class="text-3xl font-bold text-white">
+                Imagen convertida
+            </h2>
+            <p class="mt-2 text-yellow-50">
+                Revisa la vista previa y descarga el archivo cuando quieras.
+            </p>
+        </div>
+
+        <div class="grid gap-8 p-8 lg:grid-cols-[1.25fr_0.75fr]">
+
+            <!-- Vista previa -->
+            <div class="space-y-4">
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-inner">
+
+                    {% if conversion_ready %}
+
+                    {% if output_format == 'pdf' %}
+                    <object data="{{ preview_data_url }}" type="application/pdf"
+                        class="h-[32rem] w-full rounded-xl bg-white">
+                        <p class="p-6 text-sm text-slate-600">
+                            Tu navegador no puede mostrar el PDF. Usa el botón de descarga.
+                        </p>
+                    </object>
+                    {% else %}
+                    <img src="{{ preview_data_url }}" alt="Vista previa de la imagen convertida"
+                        class="mx-auto max-h-[32rem] w-full rounded-xl object-contain">
+                    {% endif %}
+
+                    {% else %}
+
+                    <div
+                        class="flex min-h-[24rem] items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-white">
+                        <p class="text-slate-500">
+                            Aún no hay ninguna conversión lista.
+                        </p>
+                    </div>
+
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Panel lateral -->
+            <aside class="flex flex-col justify-between rounded-2xl bg-yellow-50 p-6 shadow-xl ring-1 ring-yellow-200">
+
+                <div class="space-y-5">
+
+                    <div>
+                        <p class="text-xs font-bold uppercase tracking-[0.25em] text-orange-600">
+                            Resultado
+                        </p>
+                    </div>
+
+                    {% if conversion_ready %}
+
+                    <div class="space-y-4">
+
+                        <div class="rounded-xl bg-white p-4 shadow-sm ring-1 ring-yellow-200">
+                            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                Archivo original
+                            </p>
+                            <p class="mt-1 break-all font-medium text-slate-800">
+                                {{ original_name }}
+                            </p>
+                        </div>
+
+                        <div class="rounded-xl bg-white p-4 shadow-sm ring-1 ring-yellow-200">
+                            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                Formato
+                            </p>
+                            <p class="mt-1 font-medium text-slate-800">
+                                {{ output_format|upper }}
+                            </p>
+                        </div>
+
+                        <div class="rounded-xl bg-white p-4 shadow-sm ring-1 ring-yellow-200">
+                            <p class="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                                Nombre de descarga
+                            </p>
+                            <p class="mt-1 break-all font-medium text-slate-800">
+                                {{ download_name }}
+                            </p>
+                        </div>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="rounded-xl bg-white p-5 shadow-sm ring-1 ring-yellow-200">
+                        <p class="text-sm text-slate-600">
+                            Sube una imagen desde la pantalla anterior para ver el resultado aquí.
+                        </p>
+                    </div>
+
+                    {% endif %}
+                </div>
+
+                <!-- Botones -->
+                <div class="mt-8 space-y-3">
+
+                    {% if conversion_ready %}
+                    <a href="{{ preview_data_url }}" download="{{ download_name }}"
+                        class="inline-flex w-full items-center justify-center rounded-xl bg-orange-500 px-6 py-3 font-bold text-white shadow-lg shadow-orange-500/30 transition-all duration-300 hover:-translate-y-1 hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/40">
+
+                        Descargar archivo
+                    </a>
+                    {% endif %}
+
+                    <a href="{{ url_for('public.index') }}"
+                        class="inline-flex w-full items-center justify-center rounded-xl border border-orange-300 bg-white px-6 py-3 font-semibold text-orange-700 transition-all duration-300 hover:bg-orange-50 hover:border-orange-400">
+
+                        Convertir otra imagen
+                    </a>
+
+                </div>
+            </aside>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

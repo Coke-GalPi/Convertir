@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Inicio{% endblock %}</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    </head>
+    <body class="min-h-screen flex flex-col">
+
+        <header class="bg-white/70 shadow">
+            <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center">
+                    <a href="{{ url_for('public.index') }}" class="inline-flex items-center gap-3 text-2xl font-bold text-orange-600">
+                        <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-orange-600 text-white shadow">
+                            <i data-lucide="refresh-ccw" class="h-6 w-6"></i>
+                        </span>
+                        <span>Convertir Imágenes</span>
+                    </a>
+                </div>
+            </nav>
+        </header>
+
+        <main class="flex-1">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+        <footer class="mt-auto border-t border-slate-200 bg-white/70">
+            <div class="container mx-auto max-w-6xl px-6 py-8">
+                <div class="flex flex-col items-center gap-6 text-center">
+                    <div class="space-y-2">
+                        <p class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-1 text-sm font-semibold text-slate-600 shadow-sm ring-1 ring-slate-200">
+                            <i data-lucide="copyright" class="h-4 w-4"></i>
+                            {{ current_year }} Todos los derechos reservados
+                        </p>
+                        <p class="text-sm text-slate-500">
+                            Desarrollado por Coke-GalPi
+                        </p>
+                    </div>
+
+                    <div class="h-px w-full max-w-md bg-gradient-to-r from-transparent via-slate-300 to-transparent"></div>
+
+                    <div class="space-y-3">
+                        <div class="flex flex-wrap items-center justify-center gap-4">
+                            <a href="" aria-label="GitHub" class="group inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-lg shadow-yellow-500/40 ring-1 ring-slate-200 transition duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-yellow-500/60">
+                                <img src="{{ url_for('static', filename='img/contact/GitHub.svg') }}" alt="GitHub" class="h-7 w-7 transition duration-200 group-hover:scale-110">
+                            </a>
+                            <a href="" aria-label="LinkedIn" class="group inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-lg shadow-orange-500/40 ring-1 ring-slate-200 transition duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange-500/60">
+                                <img src="{{ url_for('static', filename='img/contact/LinkedIn.svg') }}" alt="LinkedIn" class="h-7 w-7 transition duration-200 group-hover:scale-110">
+                            </a>
+                            <a href="" aria-label="Gmail" class="group inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white shadow-lg shadow-red-500/40 ring-1 ring-slate-200 transition duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-red-500/60">
+                                <img src="{{ url_for('static', filename='img/contact/Gmail.svg') }}" alt="Gmail" class="h-7 w-7 transition duration-200 group-hover:scale-110">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+        <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    </body>
+</html>
