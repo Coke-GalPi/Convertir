@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block content %}
+<section class="min-h-screen bg-gradient-to-br from-orange-50 via-yellow-50 to-red-50">
+    <div class="container mx-auto px-6 py-16">
+        <!-- Hero -->
+        <div class="mx-auto max-w-4xl text-center">
+            <span class="inline-flex rounded-full bg-orange-100 px-4 py-2 text-sm font-semibold text-orange-700">
+                Herramientas Online
+            </span>
+            <h1 class="mt-6 text-5xl font-extrabold tracking-tight text-slate-900">
+                Convierte y administra tus archivos fácilmente
+            </h1>
+            <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-600">
+                Utiliza nuestras herramientas para convertir imágenes a diferentes formatos
+                o combinar varios archivos PDF en un único documento y más herramientas que 
+                se agregarán en el futuro.
+            </p>
+        </div>
+        <!-- Cards -->
+        <div class="mx-auto mt-16 grid max-w-5xl gap-8 md:grid-cols-2">
+            <!-- Conversor -->
+            <div class="group overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="bg-gradient-to-r from-orange-500 via-yellow-400 to-red-500 p-6">
+                    <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
+                        <i data-lucide="image" class="h-8 w-8 text-white"></i>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-slate-900">
+                        Conversor de Imágenes
+                    </h2>
+                    <p class="mt-3 text-slate-600">
+                        Convierte imágenes entre formatos PNG, JPG, WEBP, GIF, ICO y PDF de forma rápida.
+                    </p>
+                    <a href="{{ url_for('public.image') }}"
+                        class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-orange-500 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-500/30 transition hover:bg-orange-600">
+                        Abrir Conversor
+                    </a>
+                </div>
+            </div>
+            <!-- Unir PDF -->
+            <div class="group overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 p-6">
+                    <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
+                        <i data-lucide="file-stack" class="h-8 w-8 text-white"></i>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-slate-900">
+                        Unir PDFs
+                    </h2>
+                    <p class="mt-3 text-slate-600">
+                        Combina múltiples archivos PDF en un único documento manteniendo el orden que elijas.
+                    </p>
+                    <a href="{{ url_for('public.docpdf') }}"
+                        class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-red-500 px-6 py-3 font-semibold text-white shadow-lg shadow-red-500/30 transition hover:bg-red-600">
+                        Unir PDFs
+                    </a>
+                </div>
+            </div>
+            <!-- PDF a docx -->
+            <div class="group overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-slate-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+                <div class="bg-gradient-to-r from-red-500 via-orange-500 to-yellow-400 p-6">
+                    <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
+                        <i data-lucide="file-text" class="h-8 w-8 text-white"></i>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <h2 class="text-2xl font-bold text-slate-900">
+                        PDF a DOCX
+                    </h2>
+                    <p class="mt-3 text-slate-600">
+                        Convierte archivos PDF a formato DOCX para facilitar la edición y modificación.
+                    </p>
+                    <a href="{{ url_for('public.pdfdocx') }}"
+                        class="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-red-500 px-6 py-3 font-semibold text-white shadow-lg shadow-red-500/30 transition hover:bg-red-600">
+                        Convertir PDF a DOCX
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

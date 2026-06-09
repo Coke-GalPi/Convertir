@@ -29,19 +29,22 @@ Output
                     {% if output_format == 'pdf' %}
                     <object data="{{ preview_data_url }}" type="application/pdf"
                         class="h-[32rem] w-full rounded-xl bg-white">
-                        <p class="p-6 text-sm text-slate-600">
-                            Tu navegador no puede mostrar el PDF. Usa el botón de descarga.
-                        </p>
+                        <div class="flex flex-col items-center justify-center p-6">
+                            <img src="{{ url_for('static', filename='img/document-icon.svg') }}" alt="Documento" class="h-24 w-24">
+                            <p class="p-6 text-sm text-slate-600">
+                                Tu navegador no puede mostrar el PDF. Usa el botón de descarga.
+                            </p>
+                        </div>
                     </object>
                     {% else %}
                     <img src="{{ preview_data_url }}" alt="Vista previa de la imagen convertida"
-                        class="mx-auto max-h-[32rem] w-full rounded-xl object-contain">
+                        class="mx-auto max-h-[32rem] w-full rounded-xl object-contain"
+                        onerror="this.onerror=null;this.src='{{ url_for('static', filename='img/document-icon.svg') }}';">
                     {% endif %}
 
                     {% else %}
 
-                    <div
-                        class="flex min-h-[24rem] items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-white">
+                    <div class="flex min-h-[24rem] items-center justify-center rounded-xl border-2 border-dashed border-slate-300 bg-white">
                         <p class="text-slate-500">
                             Aún no hay ninguna conversión lista.
                         </p>
